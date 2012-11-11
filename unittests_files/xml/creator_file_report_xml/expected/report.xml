@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <application>
+        <version>1.0</version>
+    </application>
+    <file_entity>
+        <name>image_01.png</name>
+        <filesize_bytes>3626</filesize_bytes>
+        <number_hidden_data_bytes>7</number_hidden_data_bytes>
+        <hash_cheksum>
+            <hash_cheksum_entity>
+                <algorithm_name>md5</algorithm_name>
+                <cheksum>5d30a59a88fdaefe49388e4138c5e427</cheksum>
+            </hash_cheksum_entity>
+            <hash_cheksum_entity>
+                <algorithm_name>adler32</algorithm_name>
+                <cheksum>3035168292</cheksum>
+            </hash_cheksum_entity>
+        </hash_cheksum>
+    </file_entity>
+    <file_entity>
+        <name>image_02.png</name>
+        <filesize_bytes>2081</filesize_bytes>
+        <number_hidden_data_bytes>1234321</number_hidden_data_bytes>
+        <hash_cheksum>
+            <hash_cheksum_entity>
+                <algorithm_name>md5</algorithm_name>
+                <cheksum>54d0ce07dde5d8a2a2c0de8c531bb343</cheksum>
+            </hash_cheksum_entity>
+            <hash_cheksum_entity>
+                <algorithm_name>adler32</algorithm_name>
+                <cheksum>3271269447</cheksum>
+            </hash_cheksum_entity>
+        </hash_cheksum>
+    </file_entity>
+</root>

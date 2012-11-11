@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="backuper" default="build">
+	
+	<property name="dir.src" location="./src/magdysyuk/backuper/source" />
+	<property name="dir.config" location="./config" />
+	<property name="dir.lib" location="./lib" />
+	<property name="dir.build" location="./build" />
+	<property name="dir.build.config" location="${dir.build}/config" />
+	<property name="dir.build.lib" location="${dir.build}/lib" />
+	<property name="dir.build.classes" location="${dir.build}/classes" />
+	<property name="file.output.jar" location="${dir.build}/backuper_v_1_0.jar" />
+	<fileset id="fileset.dir.lib.jars" dir="${dir.lib}">
+		<include name="**/*.jar" />
+	</fileset>
+	<fileset id="fileset.dir.build.lib.jars" dir="${dir.build.lib}">
+		<include name="**/*.jar" />
+	</fileset>
+	<fileset id="fileset.dir.config.xmls" dir="${dir.config}">
+		<include name="**/*.xml" />
+	</fileset>
+
+	<path id="path.master">
+		<fileset refid="fileset.dir.build.lib.jars" />
+		<pathelement location="${dir.build.config}" />
+	</path>
+	
+	<property name="class.main" value="magdysyuk.backuper.source.Main" />
+	
+	
+	<target name="mkdirs">
+		<delete dir="${dir.build}" />
+		<mkdir dir="${dir.build.classes}" />
+		<mkdir dir="${dir.build.lib}" />
+		<mkdir dir="${dir.build.config}" />
+	</target>
+	
+	<target name="copy_files" depends="mkdirs">
+		<copy todir="${dir.build.lib}" flatten="true">
+			<fileset refid="fileset.dir.lib.jars" />
+		</copy>
+		<copy todir="${dir.build.config}">
+			<fileset refid="fileset.dir.config.xmls" />
+		</copy>
+	</target>
+	
+	<target name="compile" depends="copy_files">
+		<javac srcdir="${dir.src}" destdir="${dir.build.classes}">
+			<classpath refid="path.master" />
+		</javac>
+	</target>
+	
+	<target name="build" depends="compile">
+		<manifestclasspath property="classpath.master" jarfile="${file.output.jar}">
+			<classpath refid="path.master" />
+		</manifestclasspath>
+		<jar destfile="${file.output.jar}" basedir="${dir.build.classes}">
+			<manifest>
+                <attribute name="Main-Class" value="${class.main}" />
+            	<attribute name="Class-Path" value="${classpath.master}" /> 
+            </manifest>
+		</jar>
+	</target>
+	
+</project>
